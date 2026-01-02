@@ -1,0 +1,10 @@
+FROM alpine:3.18
+RUN apk add --no-cache curl bash wget unzip
+RUN wget https://github.com/trojan-gfw/trojan/releases/download/v1.16.0/trojan-1.16.0-linux-amd64.tar.gz && \
+    tar -xzf trojan-1.16.0-linux-amd64.tar.gz && \
+    mv trojan/trojan /usr/local/bin/trojan
+COPY config.json /etc/trojan/config.json
+COPY cert.pem /etc/trojan/cert.pem
+COPY key.pem /etc/trojan/key.pem
+EXPOSE 443
+CMD ["/usr/local/bin/trojan", "-c", "/etc/trojan/config.json"]
