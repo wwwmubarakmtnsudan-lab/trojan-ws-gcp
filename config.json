@@ -1,0 +1,35 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [{
+    "port": 443,
+    "listen": "0.0.0.0",
+    "protocol": "trojan",
+    "settings": {
+      "clients": [
+        {
+          "password": "Trojan-2026"
+        }
+      ]
+    },
+    "streamSettings": {
+      "network": "ws",
+      "security": "tls",
+      "tlsSettings": {
+        "certificates": [
+          {
+            "certificateFile": "/path/to/cert.pem",
+            "keyFile": "/path/to/key.pem"
+          }
+        ]
+      },
+      "wsSettings": {
+        "path": "/MR_VPN_Mubarak_Ahmed"
+      }
+    }
+  }],
+  "outbounds": [{
+    "protocol": "freedom"
+  }]
+}
